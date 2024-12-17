@@ -1,4 +1,4 @@
-name: Deploy Pipeline
+name: CD Pipeline
 
 on:
   push:
@@ -50,10 +50,6 @@ jobs:
       - name: Install Vercel CLI
         run: npm install -g vercel
 
-      # 3. Login no Vercel
-      - name: Vercel login
-        run: vercel login ${{ secrets.VERCEL_GITHUB }}
-
-      # 4. Fazer deploy para o Vercel
+      # 3. Fazer deploy para o Vercel
       - name: Deploy to Vercel
-        run: vercel --prod --token ${{ secrets.VERCEL_GITHUB }} --scope ${{ secrets.VERCEL_SCOPE }}
+        run: vercel --prod --token ${{ secrets.VERCEL_TOKEN }} --scope ${{ secrets.VERCEL_SCOPE }}
