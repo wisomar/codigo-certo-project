@@ -18,14 +18,14 @@ jobs:
     - name: Log in to Docker Hub
       uses: docker/login-action@v2
       with:
-        username: ${{ secrets.USER_DOCKER }}
-        password: ${{ secrets.SENHA_DOCKER }}
+        username: ${{ secrets.user_docker }}
+        password: ${{ secrets.senha_docker }}
 
     # 3. Construir e enviar a imagem para o Docker Hub
     - name: Build and push Docker image
       run: |
-        docker build -t ${{ secrets.USER_DOCKER }}/flask-app:latest .
-        docker push ${{ secrets.SENHA_DOCKER }}/flask-app:latest
+        docker build -t ${{ secrets.user_docker }}/flask-app:latest .
+        docker push ${{ secrets.senha_docker }}/flask-app:latest
 
     # 4. Deploy automático na Vercel
     - name: Deploy to Vercel
