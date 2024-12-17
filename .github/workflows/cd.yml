@@ -21,15 +21,15 @@ jobs:
         username: ${{ secrets.user_docker }}
         password: ${{ secrets.senha_docker }}
 
-    # 3. Construir e enviar a imagem para o Docker Hub
+    # 3. Construir e enviar a imagem para o Docker Hub com a docker/build-push-action
     - name: Build and push Docker image
       uses: docker/build-push-action@v3.2.0
-        with:
-          context: .
-          push: true
-          tags:
-            ${{ secrets.user_docker }}/codigo-certo-project:v1
-            ${{ secrets.user_docker }}/codigo-certo-project:latest
+      with:
+        context: .
+        push: true
+        tags: |
+          ${{ secrets.user_docker }}/codigo-certo-project:v1
+          ${{ secrets.user_docker }}/codigo-certo-project:latest
 
     # 4. Deploy automático na Vercel
     - name: Deploy to Vercel
